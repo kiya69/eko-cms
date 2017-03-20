@@ -32,7 +32,7 @@ var currentCollection;
 var data;
 var currentGuideIndex = 0;
 function init() {
-    loadJSON('../data.json', function(response) {
+    loadJSON('./data.json', function(response) {
         // Parse JSON string into object
         data = JSON.parse(response);
         assginCollection(data)
