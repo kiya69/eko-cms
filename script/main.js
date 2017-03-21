@@ -158,8 +158,8 @@ function resetContentScrollEffect() {
     }
 
 }
-// window.onresize = function(event) {
-//     if(window.innerWidth >= 1015 )){
-//
-//     }
-// };
+window.onresize = function(event) {
+    if(window.innerWidth >= 950 ){
+        elems.rightColumn.style.display = 'block';
+    }
+};

@@ -327,7 +327,7 @@ ul li {
     }
     #guide-mobile-close {
         display: block;
-        right: 14px;
+        right: 18px;
         top: 14px;
         cursor: pointer;
         position: absolute;
@@ -339,6 +339,7 @@ ul li {
 }
 @media only screen and  (max-width: 442px) {
     .enlarge {
+        padding: 20px;
         height: 101px;
     }
     .enlarge .collection-title{
@@ -348,6 +349,7 @@ ul li {
     }
     ul li {
         height: 101px;
+        padding: 20px;
     }
 
     .collection-title {
