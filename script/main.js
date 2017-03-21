@@ -25,7 +25,9 @@ var elems = {
     "rightArrow": document.querySelector('.right-arrow'),
     "left": document.querySelector('.left'),
     "right": document.querySelector('.right'),
-    "currentArticle": document.querySelector('.current-article')
+    "currentArticle": document.querySelector('.current-article'),
+    "guideWrapper": document.querySelector('.guide-wrapper'),
+    "rightColumn": document.querySelector('.right-column-wrapper')
 }
 var currentGuide;
 var currentCollection;
@@ -37,7 +39,9 @@ function init() {
         data = JSON.parse(response);
         assginCollection(data)
     });
-
+    // if(window.innerWidth < 950){
+    //     document.querySelector('.enlarge').className = '';
+    // }
 }
 init();
 function assginCollection(data) {
@@ -71,33 +75,39 @@ function assignGuide(_currentGuide, _currentGuideIndex) {
         elems.leftArrow.style.display = 'block'
     }
     resetContentScrollEffect();
-    elems.content.scrollTop = 0;
+    elems.guideWrapper.scrollTop = 0;
+}
+function onCollectionClick(li, i) {
+  for(var j = 0; j < lis.length; j++){
+    if(j === i) continue;
+    lis[j].className = '';
+    lis[j].children[0].className = 'current-article hide';
+    // lis[j].querySelector('.current-article').className = "hide"
+  }
+  li.className = 'enlarge show';
+  li.children[0].className = "current-article show"
+  //load guide title in collection section
+  //load guide title & content
+  currentCollection = data["section" + (i+1)];
+  currentGuideIndex = 0;
+
+  //Change arrow color
+  document.getElementById('left-arrow-svg').setAttribute('fill', currentCollection.color);
+  document.getElementById('right-arrow-svg').setAttribute('fill', currentCollection.color);
+  document.getElementById('Oval').setAttribute('stroke', currentCollection.color);
+  document.getElementById('Shape').setAttribute('fill', currentCollection.color);
+  elems.guideTitle.style.color = currentCollection.color;
+  elems.left.style.color = currentCollection.color;
+  elems.right.style.color = currentCollection.color;
+  elems.rightColumn.style.display = 'block';
+  assignGuide(currentCollection.children[currentGuideIndex], currentGuideIndex);
 }
 function addClickEvent() {
     for(var i =0; i < lis.length; i++){
       (function (i) {
         var li = lis[i];
         li.addEventListener('click', function (e) {
-          for(var j = 0; j < lis.length; j++){
-            if(j === i) continue;
-            lis[j].className = '';
-            lis[j].children[0].className = 'current-article hide';
-            // lis[j].querySelector('.current-article').className = "hide"
-          }
-          li.className = 'enlarge show';
-          li.children[0].className = "current-article show"
-          //load guide title in collection section
-          //load guide title & content
-          currentCollection = data["section" + (i+1)];
-          currentGuideIndex = 0;
-
-          //Change arrow color
-          document.getElementById('left-arrow-svg').setAttribute('fill', currentCollection.color);
-          document.getElementById('right-arrow-svg').setAttribute('fill', currentCollection.color);
-          elems.guideTitle.style.color = currentCollection.color;
-          elems.left.style.color = currentCollection.color;
-          elems.right.style.color = currentCollection.color;
-          assignGuide(currentCollection.children[currentGuideIndex], currentGuideIndex);
+            onCollectionClick(li, i);
         })
       }(i))
     }
@@ -114,13 +124,16 @@ function addClickEvent() {
 
         assignGuide(currentGuide, currentGuideIndex);
     })
+    document.getElementById('guide-mobile-close').addEventListener('click', function () {
+        elems.rightColumn.style.display = 'none';
+    })
 
 }
 addClickEvent();
 
 //fade out text at top/bottom when scrolling to bottom/top
-elems.content.onscroll = function() {
-    var elm = elems.content;
+elems.guideWrapper.onscroll = function() {
+    var elm = elems.guideWrapper;
     if(elm.scrollTop + elm.clientHeight == elm.scrollHeight &&  elm.scrollHeight != elm.clientHeight) {
         //bottom
         document.querySelector('.content-gradient-bottom').style.display = 'none'
@@ -136,7 +149,7 @@ elems.content.onscroll = function() {
     }
 }
 function resetContentScrollEffect() {
-    if(elems.content.clientHeight === elems.content.scrollHeight){
+    if(elems.guideWrapper.clientHeight === elems.guideWrapper.scrollHeight){
         document.querySelector('.content-gradient-top').style.display = 'none'
         document.querySelector('.content-gradient-bottom').style.display = 'none'
     }else{
@@ -145,3 +158,8 @@ function resetContentScrollEffect() {
     }
 
 }
+// window.onresize = function(event) {
+//     if(window.innerWidth >= 1015 )){
+//
+//     }
+// };

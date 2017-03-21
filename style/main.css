@@ -6,19 +6,12 @@
 @font-face {font-family: 'Stolzl-Regular';src: url('https://d1w2zhnqcy4l8f.cloudfront.net/content/helloeko/fonts/Stolzl/30E833_1_0.eot');src: url('https://d1w2zhnqcy4l8f.cloudfront.net/content/helloeko/fonts/Stolzl/30E833_1_0.eot?#iefix') format('embedded-opentype'),url('https://d1w2zhnqcy4l8f.cloudfront.net/content/helloeko/fonts/Stolzl/30E833_1_0.woff2') format('woff2'),url('https://d1w2zhnqcy4l8f.cloudfront.net/content/helloeko/fonts/Stolzl/30E833_1_0.woff') format('woff'),url('https://d1w2zhnqcy4l8f.cloudfront.net/content/helloeko/fonts/Stolzl/30E833_1_0.ttf') format('truetype');}
 body {
     background: -moz-linear-gradient(180deg, rgba(45, 80, 255, 1) 0%, rgba(25, 26, 36, 1) 100%);
-    /* ff3.6+ */
     background: -webkit-gradient(linear, top, bottom, color-stop(0%, rgba(45, 80, 255, 1)), color-stop(100%, rgba(25, 26, 36, 1)));
-    /* safari4+,chrome */
     background: -webkit-linear-gradient(180deg, rgba(45, 80, 255, 1) 0%, rgba(25, 26, 36, 1) 100%);
-    /* safari5.1+,chrome10+ */
     background: -o-linear-gradient(180deg, rgba(45, 80, 255, 1) 0%, rgba(25, 26, 36, 1) 100%);
-    /* opera 11.10+ */
     background: -ms-linear-gradient(180deg, rgba(45, 80, 255, 1) 0%, rgba(25, 26, 36, 1) 100%);
-    /* ie10+ */
     background: linear-gradient(180deg, rgba(45, 80, 255, 1) 0%, rgba(25, 26, 36, 1) 100%);
-    /* w3c */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(25, 26, 36, 1)', endColorstr='rgba(45, 80, 255, 1)', GradientType=1);
-    /* ie6-9 */
     background-attachment: fixed;
     font-family: 'Stolzl-Bold', sans-serif;
 }
@@ -61,7 +54,6 @@ ul li {
 }
 
 .enlarge .collection-title {
-    /*font-size: 20px;*/
     font-size: 138%;
     line-height: 30px;
     letter-spacing: 0.8px;
@@ -83,7 +75,7 @@ ul li {
     background-color: #ff5a3c;
 }
 
-.guide {
+.right-column-wrapper {
     width: 759px;
     height: 620px;
     background-color: #fff;
@@ -108,22 +100,27 @@ ul li {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 90%;
+    /*width: 90%;*/
+    width: 1172px;
     height: 90%;
 }
 
 .content-wrapper {
-    height: 72.4%;
+    height: 82.6%;
     position: relative;
+}
+.guide-wrapper {
+    overflow-y: auto;
+    height: 547px;
 }
 .content {
     padding: 0 9%;
     height: 100%;
-    overflow-y: auto;
 }
 .footer {
     position: relative;
-    width: 759px;
+    /*width: 759px;*/
+    width: 100%;
     height: 6.1em;
     font-size: 12px;
     line-height: 6.1em;
@@ -185,18 +182,20 @@ ul li {
     height: 101%;
     position: absolute;
     pointer-events: none;
-    top: 0;
+    /*top: 0;*/
+    bottom: 0;
     width: 100%;
 }
 
 .content-gradient-top {
     background: linear-gradient(white 0%, rgba(255,255,255,0));
-    height: 15%;
+    height: 10%;
     position: absolute;
     pointer-events: none;
     top: 0;
     width: 100%;
     display: none;
+    z-index: 5;
 }
 
 #back-to-eko {
@@ -205,4 +204,154 @@ ul li {
     font-size: 10px;
     height: 43px;
     line-height: 60px;
+}
+#guide-mobile-close {
+    display: none;
+}
+@media only screen and (min-width: 950px) and (max-width: 1100px) {
+    ul li {
+        width: 290px;
+    }
+
+    .enlarge {
+        width: 360px;
+        height: 131px;
+        color: #fff;
+        opacity: 1;
+        padding: 25px;
+        box-sizing: border-box;
+        font-family: 'Stolzl-Bold', sans-serif;
+        box-shadow: 0px 4px 20px 2px rgba(0, 0, 0, 0.2), 5px 5px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-left: -12px;
+        padding-right: 30px;
+    }
+
+    .enlarge .collection-title {
+        /*font-size: 20px;*/
+        font-size: 121%;
+        line-height: 30px;
+        letter-spacing: 0.8px;
+    }
+    .right-column-wrapper {
+        position: absolute;
+        left: 340px;
+        width: 590px;
+    }
+    .footer{
+        width: 100%;
+    }
+    .content-wrapper{
+        height: 85.6%;
+    }
+    .center{
+        width: 90%;
+    }
+}
+@media only screen and (min-width: 1101px) and (max-width: 1295px) {
+
+    .right-column-wrapper {
+        position: absolute;
+        left: 370px;
+        width: 690px;
+    }
+
+    .center{
+        width: 90%;
+    }
+    .enlarge {
+        width: 400px;
+    }
+}
+
+@media only screen and (max-width: 949px) {
+
+    .center{
+        width: 90%;
+    }
+    .right-column-wrapper{
+        display: none;
+        width: 100%;
+        z-index: 2;
+        position: absolute;
+        top: 2.8%;
+        margin-left: 0;
+    }
+    li:nth-child(1) {
+        background-color: rgba(144, 18, 254, 1);
+    }
+
+    li:nth-child(2) {
+        background-color: rgba(70, 245, 195, 1);
+    }
+
+    li:nth-child(3) {
+        background-color: rgba(255, 0, 96, 1);
+    }
+
+    li:nth-child(4) {
+        background-color: #ff5a3c;
+    }
+    ul {
+        position: absolute;
+        width: 100%;
+    }
+    ul li {
+        width: 100%;
+        height: 131px;
+        color: #fff;
+        opacity: 1;
+        padding: 25px;
+        box-sizing: border-box;
+        font-family: 'Stolzl-Bold', sans-serif;
+        box-shadow: 0px 4px 20px 2px rgba(0, 0, 0, 0.2), 5px 5px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-left: 0;
+        padding-right: 30px;
+    }
+    .collection-title {
+        font-size: 138%;
+        line-height: 133%;
+        letter-spacing: 0.8px;
+    }
+    .current-article{
+        display: block !important;
+    }
+    #back-to-eko {
+        display: none;
+    }
+    .enlarge {
+        width: 100%;
+        margin-left: 0;
+    }
+    .content-wrapper {
+        height: 87.6%;
+    }
+    #guide-mobile-close {
+        display: block;
+        right: 14px;
+        top: 14px;
+        cursor: pointer;
+        position: absolute;
+        z-index: 6;
+    }
+    .left, .right{
+        display: none
+    }
+}
+@media only screen and  (max-width: 442px) {
+    .enlarge {
+        height: 101px;
+    }
+    .enlarge .collection-title{
+        height: 101px;
+        font-size: 108%;
+        line-height: 108%;
+    }
+    ul li {
+        height: 101px;
+    }
+
+    .collection-title {
+        font-size: 108%;
+        line-height: 108%;
+    }
 }
